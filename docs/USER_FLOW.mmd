@@ -1,0 +1,20 @@
+flowchart LR
+    A[Landing] --> B[Choose Industry / Role / Problem]
+    B --> C[Search / Browse]
+    C --> D[Workflow Product Page]
+    D --> E[See Outcome]
+    E --> F[Preview Example]
+    F --> G{Free or Paid?}
+    G -->|Free| H[Use]
+    G -->|Paid| I[Checkout]
+    I --> J[Verified Purchase]
+    J --> K[Unlock Workflow]
+    H --> L[Library]
+    K --> L
+    L --> M[Reuse]
+    M --> N[Rate / Review]
+    M --> O[Usage Event]
+    N --> P[Quality Optimization]
+    O --> P
+    P --> Q[Version Update]
+    Q --> D
