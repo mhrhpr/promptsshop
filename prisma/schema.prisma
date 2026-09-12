@@ -1,0 +1,163 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client { provider = "prisma-client-js" }
+
+enum PackageType { FREE INDIVIDUAL PACK ROLE_PACK PROFESSIONAL_SYSTEM }
+enum PublishStatus { DRAFT IN_REVIEW PUBLISHED ARCHIVED }
+enum PurchaseStatus { PENDING PAID REFUNDED FAILED }
+
+model Department {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  name        String
+  slug        String   @unique
+  roles       Role[]
+  actionsJson Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Role {
+  id           String        @id @default(cuid())
+  code         String        @unique
+  name         String
+  slug         String        @unique
+  departmentId String
+  department   Department    @relation(fields: [departmentId], references: [id])
+  packages     RolePackage[]
+  aliases      String[]
+  externalRefs Json?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  @@index([departmentId])
+}
+
+model RolePackage {
+  id          String        @id @default(cuid())
+  code        String        @unique
+  name        String
+  slug        String        @unique
+  roleId      String
+  role        Role          @relation(fields: [roleId], references: [id])
+  packageType PackageType   @default(ROLE_PACK)
+  priceCents  Int           @default(0)
+  currency    String        @default("USD")
+  description String
+  outcome     String
+  status      PublishStatus @default(DRAFT)
+  prompts     Prompt[]
+  purchases   Purchase[]
+  reviews     Review[]
+  seo         SeoMetadata?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  @@index([roleId, status])
+}
+
+model Prompt {
+  id          String        @id @default(cuid())
+  code        String        @unique
+  packageId   String
+  package     RolePackage   @relation(fields: [packageId], references: [id])
+  title       String
+  task        String
+  sortOrder   Int
+  status      PublishStatus @default(DRAFT)
+  versions    PromptVersion[]
+  usageEvents UsageEvent[]
+  reviews     Review[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  @@unique([packageId, sortOrder])
+  @@index([packageId, status])
+}
+
+model PromptVersion {
+  id                String        @id @default(cuid())
+  promptId          String
+  prompt            Prompt        @relation(fields: [promptId], references: [id])
+  version           String
+  masterPrompt      String        @db.Text
+  inputSchema       Json
+  outputSchema      Json
+  exampleInput      Json?
+  exampleOutput     Json?
+  recommendedModels String[]
+  limitations       String[]
+  qualityScore      Float?
+  successRate       Float?
+  status            PublishStatus @default(DRAFT)
+  changeNote        String?
+  qualityRuns       QualityRun[]
+  createdAt         DateTime      @default(now())
+  @@unique([promptId, version])
+}
+
+model QualityRun {
+  id              String        @id @default(cuid())
+  promptVersionId String
+  promptVersion   PromptVersion @relation(fields: [promptVersionId], references: [id])
+  evaluator       String
+  score           Float
+  success         Boolean
+  notes           String?
+  inputSnapshot   Json?
+  outputSnapshot  Json?
+  createdAt       DateTime      @default(now())
+  @@index([promptVersionId, createdAt])
+}
+
+model Purchase {
+  id          String         @id @default(cuid())
+  externalId  String?        @unique
+  userId      String
+  packageId   String
+  package     RolePackage    @relation(fields: [packageId], references: [id])
+  status      PurchaseStatus @default(PENDING)
+  amountCents Int
+  currency    String
+  purchasedAt DateTime?
+  createdAt   DateTime       @default(now())
+  @@index([userId, packageId, status])
+}
+
+model UsageEvent {
+  id         String   @id @default(cuid())
+  userId     String
+  promptId   String
+  prompt     Prompt   @relation(fields: [promptId], references: [id])
+  event      String
+  success    Boolean?
+  outcome    Json?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  @@index([userId, promptId, createdAt])
+}
+
+model Review {
+  id        String      @id @default(cuid())
+  userId    String
+  packageId String
+  package   RolePackage @relation(fields: [packageId], references: [id])
+  promptId  String?
+  prompt    Prompt?     @relation(fields: [promptId], references: [id])
+  rating    Int
+  text      String?
+  createdAt DateTime    @default(now())
+  @@index([packageId, rating])
+}
+
+model SeoMetadata {
+  id          String      @id @default(cuid())
+  packageId   String      @unique
+  package     RolePackage @relation(fields: [packageId], references: [id])
+  title       String
+  description String
+  canonical   String?
+  keywords    String[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
