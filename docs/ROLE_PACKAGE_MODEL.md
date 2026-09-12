@@ -7,15 +7,17 @@
 The catalog is intentionally separated into:
 `Department → Role → RolePackage → Prompt → PromptVersion → QualityRun`
 
-### IDs
+### Stable IDs
 
-- Department: `DEPT-{2}` (example `DEPT-FA`)
-- Role: `ROLE-{DEPT}-{ROLE_KEY}`
-- Role Package: `PS-{DEPT}-{ROLE_KEY}-{NNN}`
-- Prompt: `{PACKAGE_CODE}-P{01..20}`
+- Department: `DEPT-{FUNCTION_CODE}` (examples: `DEPT-FIN`, `DEPT-HR`, `DEPT-DATA`)
+- Role: `ROLE-{FUNCTION_CODE}-{ROLE_KEY}` (example: `ROLE-FIN-ACCSPEC`)
+- Role Package: `PS-{FUNCTION_CODE}-{ROLE_KEY}` (example: `PS-FIN-ACCSPEC`)
+- Prompt: `{PACKAGE_CODE}-P{01..20}` (example: `PS-FIN-ACCSPEC-P01`)
 - Prompt Version: `{PROMPT_CODE}-V{semver}`
 
-External occupational standards are reference mappings only. PromptShop IDs remain stable even if ESCO/ISCO releases change.
+**Important:** Package IDs are not row-number based. Reordering the organization chart must never change product identity, purchases, URLs, or analytics history.
+
+External occupational standards are reference mappings only. PromptShop IDs remain proprietary and stable even when ESCO/ISCO releases change.
 
 ## Prompt Contract
 
@@ -66,7 +68,7 @@ Every Role Package contains exactly 20 initial commands. Their categories are de
 19. Track execution
 20. Run weekly professional review
 
-The concrete task for each command is role-specific.
+The task label is specialized by organizational function and the prompt is rendered with the specific Role context before it is persisted to production data.
 
 ## Prisma-oriented entity model
 
