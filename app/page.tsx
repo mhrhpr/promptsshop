@@ -1,0 +1,16 @@
+import Link from 'next/link'
+import { roles, workflows } from '@/lib/catalog'
+import { WorkflowCard } from '@/components/workflow-card'
+
+export default function Home() {
+  const free = workflows.filter(w => w.free).slice(0, 4)
+  return (
+    <>
+      <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><div className="kicker"><span className="pulse"/> OMIND / PromptShop</div><h1>AI برای <em>کار واقعی.</em><br/>نه برای بازی با Prompt.</h1><p className="hero-sub">شغلت را انتخاب کن، مسئله‌ات را پیدا کن، workflow آماده را اجرا کن.</p><form action="/search" className="hero-search"><input name="q" placeholder="امروز چه کاری باید انجام بدهی؟ مثال: تحلیل ترک خدمت" aria-label="جستجوی workflow"/><button type="submit">پیدا کن <span>→</span></button></form><div className="hero-meta"><span>۳۰۰۰+ workflow در نقشه محصول</span><span>۳ مورد رایگان برای شروع</span></div></div><div className="hero-visual"><div className="hero-orbit orbit-one"/><div className="hero-orbit orbit-two"/><div className="workflow-window"><div className="window-top"><span className="window-dots">•••</span><span>Employee Turnover Diagnosis</span><span>LIVE</span></div><div className="window-body"><small>INPUT</small><p>خروج کارکنان ۶ ماه اخیر، واحدها، tenure، ارزیابی عملکرد</p><div className="scan-line"/><small>OUTCOME</small><div className="mini-result"><b>۳ driver اصلی</b><b>۲ segment پرریسک</b><b>۵ اقدام</b></div><Link href="/workflows/hr-turnover" className="mini-button">مشاهده خروجی ↗</Link></div></div></div></div></section>
+      <section className="section shell"><div className="section-head"><div><span className="section-index">01</span><h2>با نقش خودت شروع کن</h2></div><Link href="/roles">همه نقش‌ها ↗</Link></div><div className="role-grid">{roles.map(role => <Link href={`/roles/${role.id.toLowerCase()}`} key={role.id} className="role-card"><div className="role-icon">{role.icon}</div><div><strong>{role.name}</strong><span>{role.dept}</span></div><span className="card-arrow">→</span></Link>)}</div></section>
+      <section className="section section-soft"><div className="shell"><div className="section-head"><div><span className="section-index">02</span><h2>Workflowهای واقعی</h2></div><Link href="/search">جستجو ↗</Link></div><div className="workflow-grid">{free.map(w => <WorkflowCard key={w.id} workflow={w}/>)}</div></div></section>
+      <section className="section shell proof-grid"><div className="proof-copy"><span className="section-index">03</span><h2>اول outcome را ببین.</h2><p>PromptShop قرار نیست prompt را به تو بفروشد. خروجی کاری را از قبل مشخص می‌کند: چه چیزی می‌گیری، با چه ورودی، و کجا باید تصمیم انسانی بگیری.</p><Link className="text-link" href="/packs">دیدن Role Packها ↗</Link></div><div className="proof-card"><div className="before-after"><span>RAW</span><div className="raw-lines"><i/><i/><i/><i/><i/></div><span>→</span><span>DECISION</span><div className="decision-box"><b>Risk: High</b><small>Evidence / assumptions / next actions</small></div></div></div></section>
+      <section className="cta"><div className="shell cta-inner"><div><span className="kicker">BUILT BY OMIND</span><h2>برای کارمند ساخته شده.<br/><em>برای سازمان مقیاس‌پذیر.</em></h2></div><Link href="/roles" className="button button-primary">ورود به Toolkit →</Link></div></section>
+    </>
+  )
+}
