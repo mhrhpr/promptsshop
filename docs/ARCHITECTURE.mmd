@@ -1,0 +1,154 @@
+flowchart TD
+    A[Visitor / Professional] --> B[Landing Page]
+    B --> C{Discovery Intent}
+    C -->|Industry| D[Industry]
+    C -->|Role| E[Role]
+    C -->|Problem| F[Problem]
+    C -->|Search| G[Taxonomy-aware Search]
+
+    D --> H[Workflow Catalog]
+    E --> H
+    F --> H
+    G --> H
+
+    H --> I[Workflow Product Page]
+    I --> J[Outcome Preview]
+    I --> K[Examples / Before-After]
+    I --> L[Trust Signals]
+    I --> M[Version / Quality]
+
+    I --> N{Access}
+    N -->|Free| O[Use Workflow]
+    N -->|Paid| P[Checkout]
+    P --> Q[Payment Provider]
+    Q --> R[Verified Webhook]
+    R --> S[Purchase Entitlement]
+    S --> T[User Library]
+    O --> T
+
+    T --> U[Reuse Workflow]
+    U --> V[Feedback / Rating]
+    U --> W[Usage Analytics]
+    V --> X[Quality System]
+    W --> X
+    X --> Y[Optimize]
+    Y --> Z[New Product Version]
+    Z --> H
+
+    subgraph DOMAIN[Domain Model]
+        D1[Industry]
+        D2[Role]
+        D3[Problem]
+        D4[Product / Workflow]
+        D5[Product Version]
+        D6[Prompt Engine]
+        D7[Quality Evaluation]
+        D8[SEO Metadata]
+        D9[Analytics Events]
+    end
+
+    D1 --> D4
+    D2 --> D4
+    D3 --> D4
+    D4 --> D5
+    D5 --> D6
+    D5 --> D7
+    D4 --> D8
+    D4 --> D9
+
+    subgraph ADMIN[Admin / Operations]
+        A1[Admin Auth / RBAC]
+        A2[Product CRUD]
+        A3[Taxonomy Management]
+        A4[Version Management]
+        A5[Orders / Customers]
+        A6[Reviews]
+        A7[SEO Management]
+        A8[Analytics]
+    end
+
+    A1 --> A2
+    A1 --> A3
+    A1 --> A4
+    A1 --> A5
+    A1 --> A6
+    A1 --> A7
+    A1 --> A8
+    A2 --> D4
+    A3 --> D1
+    A3 --> D2
+    A3 --> D3
+    A4 --> D5
+
+    subgraph INFRA[Application Infrastructure]
+        I1[Next.js App Router]
+        I2[Application Services]
+        I3[PostgreSQL]
+        I4[Prisma]
+        I5[Authentication Adapter]
+        I6[Payment Adapter]
+        I7[Analytics Adapter]
+        I8[Deployment / CDN]
+    end
+
+    I1 --> I2
+    I2 --> I4
+    I4 --> I3
+    I2 --> I5
+    I2 --> I6
+    I2 --> I7
+    I1 --> I8
+
+    subgraph QUALITY[Workflow Quality Pipeline]
+        Q1[Draft]
+        Q2[Functional Test]
+        Q3[Domain Evaluation]
+        Q4[Output Consistency]
+        Q5[UX Review]
+        Q6[Version]
+        Q7[Publish]
+        Q8[Feedback]
+        Q9[Optimize]
+        Q1 --> Q2 --> Q3 --> Q4 --> Q5 --> Q6 --> Q7 --> Q8 --> Q9 --> Q2
+    end
+
+    D6 --> Q1
+    D7 --> Q3
+
+    subgraph GROWTH[Growth / SEO]
+        G1[Role Pages]
+        G2[Problem Pages]
+        G3[Workflow Pages]
+        G4[Guides]
+        G5[Use Cases]
+        G6[Comparison Content]
+        G7[Internal Linking]
+    end
+
+    G1 --> H
+    G2 --> H
+    G3 --> H
+    G4 --> H
+    G5 --> H
+    G6 --> H
+    G7 --> H
+
+    subgraph FUTURE[Future Evolution]
+        F1[Interactive AI Playground]
+        F2[Semantic Recommendations]
+        F3[Prompt A/B Testing]
+        F4[Role Packs]
+        F5[Professional Systems]
+        F6[Subscriptions]
+        F7[Team Licensing]
+        F8[Enterprise]
+    end
+
+    H -.-> F1
+    H -.-> F2
+    D5 -.-> F3
+    D4 -.-> F4
+    D4 -.-> F5
+    S -.-> F6
+    S -.-> F7
+    S -.-> F8
