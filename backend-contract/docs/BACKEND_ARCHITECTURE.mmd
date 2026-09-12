@@ -1,0 +1,32 @@
+flowchart TB
+  UI[Next.js Route / Server Action] --> APP[Application Services]
+  APP --> ID[Identity]
+  APP --> CAT[Catalog]
+  APP --> PROD[Products]
+  APP --> PROMPT[Prompts]
+  APP --> COMM[Commerce]
+  APP --> LIB[Library]
+  APP --> Q[Quality]
+  APP --> SEARCH[Search]
+  APP --> SEO[SEO]
+  APP --> ANALYTICS[Analytics]
+  APP --> ADMIN[Admin]
+
+  ID --> REPO[Repository Interfaces]
+  CAT --> REPO
+  PROD --> REPO
+  PROMPT --> REPO
+  COMM --> REPO
+  LIB --> REPO
+  Q --> REPO
+  SEARCH --> REPO
+  SEO --> REPO
+  ANALYTICS --> REPO
+  ADMIN --> REPO
+
+  REPO --> PRISMA[Prisma]
+  PRISMA --> DB[(PostgreSQL)]
+
+  COMM --> PAY[Payment Adapter]
+  ID --> AUTH[Auth Adapter]
+  ANALYTICS --> EVENT[Analytics Adapter]
