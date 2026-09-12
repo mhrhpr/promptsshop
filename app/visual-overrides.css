@@ -1,0 +1,39 @@
+/* OMIND visual refinement layer — keep after globals.css */
+.hero-grid{direction:rtl}
+.hero-copy{grid-column:1;align-self:center;text-align:right}
+.hero-visual{grid-column:2}
+.hero h1{max-width:700px;text-wrap:balance}
+.hero-sub{max-width:560px}
+.hero{min-height:680px;display:flex;align-items:center}
+.hero-search{position:relative;overflow:hidden}
+.hero-search:before{content:"";position:absolute;inset:-1px;background:linear-gradient(90deg,transparent 10%,rgba(8,124,255,.15) 50%,rgba(255,201,40,.12) 75%,transparent 90%);transform:translateX(-100%);animation:heroSheen 6s ease-in-out infinite;pointer-events:none}
+.hero-search input,.hero-search button{position:relative;z-index:1}
+.hero-visual:before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(69,196,255,.11),rgba(69,196,255,0) 62%);animation:heroGlow 7s ease-in-out infinite;pointer-events:none}
+.workflow-window{z-index:2}
+.hero-spark{z-index:3}
+.unit-grid{align-items:stretch}
+.unit-card{display:flex;flex-direction:column}
+.unit-card p{max-width:none;margin-bottom:26px}
+.workflow-grid{align-items:stretch}
+.workflow-card{display:flex;flex-direction:column}
+.workflow-card .outcome-line{margin-top:auto}
+.section-soft .shell{max-width:1160px}
+.dashboard-teaser{padding-top:34px;padding-bottom:34px}
+.chat-section{padding-top:60px}
+.mobile-drawer{position:fixed;inset:74px 12px auto 12px;z-index:60;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:18px;box-shadow:0 25px 60px rgba(16,55,79,.18);padding:12px;display:grid;gap:4px;animation:drawerIn .22s ease}
+.mobile-drawer a{padding:13px 12px;border-radius:11px;color:#344f63;font-size:13px}
+.mobile-drawer a:hover{background:#eef7ff;color:var(--blue)}
+.mobile-drawer-head{display:flex;justify-content:space-between;align-items:center;padding:8px 10px 12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.mobile-drawer-head strong{font-size:13px;color:var(--navy)}
+.mobile-drawer-head strong span{color:#72889a;font-weight:600}
+.mobile-drawer-head button{border:0;background:transparent;font-size:24px;color:#71879a;cursor:pointer}
+.hamburger{gap:4px;padding:9px;cursor:pointer}
+.hamburger span{display:block;width:18px;height:2px;border-radius:5px;background:var(--navy);transition:.22s ease}
+.hero-meta span{position:relative;padding-right:12px}
+.hero-meta span:before{content:"";position:absolute;right:0;top:.8em;width:5px;height:5px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px rgba(255,201,40,.75)}
+@keyframes heroSheen{0%,55%{transform:translateX(-120%)}80%,100%{transform:translateX(120%)}}
+@keyframes heroGlow{0%,100%{transform:scale(.94);opacity:.65}50%{transform:scale(1.07);opacity:1}}
+@keyframes drawerIn{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:980px){.hero{min-height:auto}.hero-copy,.hero-visual{grid-column:auto}.hero-grid{direction:rtl}.hero-visual{order:2}.hero-copy{order:1}.hero{display:block}.hero-grid{display:grid}}
+@media(max-width:700px){.mobile-menu{display:block}.nav-inner{justify-content:space-between}.hero-grid{gap:28px}.hero-copy{text-align:right}.hero h1{letter-spacing:-.055em}.hero-search{max-width:none}.mobile-drawer{inset:64px 8px auto 8px}}
+@media(prefers-reduced-motion:reduce){.hero-search:before,.hero-visual:before,.mobile-drawer{animation:none}}
