@@ -1,0 +1,283 @@
+# PromptShop — Organization & Role Taxonomy
+
+## Purpose
+
+PromptShop is organized around professional roles. Each role is a product family with workflows built for the recurring problems, decisions, documents, analyses, and outputs of that role.
+
+Core rule:
+
+`Organization → Function → Department → Role → Problem → Workflow → Prompt → Outcome`
+
+A Role Pack is therefore **role-specific**, not a generic collection of prompts.
+
+## Canonical Organization Chart
+
+```mermaid
+flowchart TD
+    ORG[Organization]
+    ORG --> EXE[Executive Leadership]
+    ORG --> FIN[Finance & Accounting]
+    ORG --> HR[People / HR]
+    ORG --> SALES[Sales & Business Development]
+    ORG --> MKT[Marketing & Communications]
+    ORG --> OPS[Operations]
+    ORG --> SC[Supply Chain & Procurement]
+    ORG --> CS[Customer Success & Service]
+    ORG --> IT[IT & Infrastructure]
+    ORG --> DATA[Data & Analytics]
+    ORG --> PROD[Product Management]
+    ORG --> ENG[Engineering & Software]
+    ORG --> QA[Quality / Testing]
+    ORG --> LEG[Legal / Compliance / Risk]
+    ORG --> PMO[Strategy / PMO / Business Excellence]
+    ORG --> RND[R&D / Innovation]
+    ORG --> SEC[Security]
+    ORG --> ADMIN[Administration / Facilities]
+    ORG --> DESIGN[Design / UX / Creative]
+
+    EXE --> CEO[CEO / Managing Director]
+    EXE --> COO[COO]
+    EXE --> CFO[CFO]
+    EXE --> CTO[CTO]
+    EXE --> CPO[CPO / Head of Product]
+    EXE --> CHRO[CHRO / HR Director]
+    EXE --> CMO[CMO]
+    EXE --> CIO[CIO]
+    EXE --> CLO[Chief Legal Officer]
+    EXE --> CRO[Chief Revenue Officer]
+
+    FIN --> ACCDIR[Accounting Director]
+    FIN --> CONT[Controller]
+    FIN --> ACCMGR[Accounting Manager]
+    FIN --> ACCSPEC[Accountant]
+    FIN --> AP[Accounts Payable Specialist]
+    FIN --> AR[Accounts Receivable Specialist]
+    FIN --> PAY[Payroll Specialist]
+    FIN --> TAX[Tax Specialist]
+    FIN --> TREAS[Treasury Specialist]
+    FIN --> FPAMGR[FP&A Manager]
+    FIN --> FINAN[Financial Analyst]
+    FIN --> AUDIT[Internal Auditor]
+
+    HR --> HRMGR[HR Manager]
+    HR --> HRSPEC[HR Specialist]
+    HR --> RECR[Recruiter / Talent Acquisition]
+    HR --> HRAN[People / HR Analyst]
+    HR --> COMP[Compensation & Benefits]
+    HR --> LND[Learning & Development]
+    HR --> PERF[Performance Management]
+    HR --> ER[Employee Relations]
+    HR --> PEOPLEOPS[People Operations]
+    HR --> HRBP[HR Business Partner]
+
+    SALES --> CRO2[Sales Director]
+    SALES --> SALMGR[Sales Manager]
+    SALES --> AE[Account Executive]
+    SALES --> BDR[Business Development Representative]
+    SALES --> SDR[Sales Development Representative]
+    SALES --> AM[Account Manager]
+    SALES --> KAM[Key Account Manager]
+    SALES --> PRESALES[Sales Engineer / Presales]
+    SALES --> REVOPS[Revenue Operations]
+
+    MKT --> MMGR[Marketing Manager]
+    MKT --> GROWTH[Growth Manager]
+    MKT --> PMKT[Product Marketing Manager]
+    MKT --> CONTENT[Content Strategist / Writer]
+    MKT --> SEO[SEO Specialist]
+    MKT --> SEM[Performance Marketing Specialist]
+    MKT --> SOCIAL[Social Media Manager]
+    MKT --> CRM[CRM / Lifecycle Marketing]
+    MKT --> BRAND[Brand Manager]
+    MKT --> PR[PR / Communications]
+    MKT --> DESIGNM[Creative Marketing]
+
+    OPS --> OPSMGR[Operations Manager]
+    OPS --> OPAN[Operations Analyst]
+    OPS --> PROC[Process Improvement Specialist]
+    OPS --> PROJ[Project Manager]
+    OPS --> SUP[Operations Supervisor]
+    OPS --> SCHED[Planner / Scheduler]
+    OPS --> FIELD[Field Operations]
+    OPS --> ADMINOPS[Operations Administrator]
+
+    SC --> PUR[Procurement Manager]
+    SC --> BUY[Buyer / Purchasing Specialist]
+    SC --> SOUR[Strategic Sourcing Manager]
+    SC --> SCM[Supply Chain Manager]
+    SC --> LOG[Logistics Manager]
+    SC --> LOGAN[Logistics Analyst]
+    SC --> DEM[Demand Planner]
+    SC --> INV[Inventory Manager]
+    SC --> WARE[Warehouse Manager]
+    SC --> FUL[Supply Chain Analyst]
+
+    CS --> CSMGR[Customer Success Manager]
+    CS --> CSPEC[Customer Support Specialist]
+    CS --> CSEXEC[Customer Success Executive]
+    CS --> SUPMGR[Support Manager]
+    CS --> CXAN[Customer Experience Analyst]
+    CS --> TECHSUP[Technical Support]
+    CS --> IMPLEMENT[Implementation Specialist]
+
+    IT --> ITMGR[IT Manager]
+    IT --> SYS[Systems Administrator]
+    IT --> NET[Network Engineer]
+    IT --> CLOUD[Cloud Engineer]
+    IT --> HELPD[Help Desk / IT Support]
+    IT --> DBA[Database Administrator]
+    IT --> ITAN[IT Analyst]
+    IT --> ENTER[Enterprise Applications]
+
+    DATA --> DIRMGR[Data / Analytics Manager]
+    DATA --> DA[Data Analyst]
+    DATA --> BIA[BI Analyst]
+    DATA --> AE2[Analytics Engineer]
+    DATA --> DE[Data Engineer]
+    DATA --> DS[Data Scientist]
+    DATA --> MLE[ML Engineer]
+    DATA --> GENG[Generative AI / AI Engineer]
+    DATA --> GOVERN[Data Governance Specialist]
+
+    PROD --> PM[Product Manager]
+    PROD --> APM[Associate Product Manager]
+    PROD --> PDM[Product Designer]
+    PROD --> PO[Product Owner]
+    PROD --> BA[Business Analyst]
+    PROD --> RESEARCH[Product Researcher]
+    PROD --> PRODUCTOPS[Product Operations]
+    PROD --> PRODUCTAN[Product Analyst]
+
+    ENG --> EMGR[Engineering Manager]
+    ENG --> SSE[Software Engineer]
+    ENG --> FE[Frontend Developer]
+    ENG --> BE[Backend Developer]
+    ENG --> FS[Full-Stack Developer]
+    ENG --> MOB[Mobile Developer]
+    ENG --> DEVOPS[DevOps Engineer]
+    ENG --> SRE[SRE / Platform Engineer]
+    ENG --> ARCH[Software Architect]
+    ENG --> TECHLEAD[Tech Lead]
+
+    QA --> QAMGR[QA Manager]
+    QA --> QAE[QA Engineer]
+    QA --> TEST[Software Tester]
+    QA --> AUTOTEST[Test Automation Engineer]
+    QA --> PERFORMANCE[Performance Test Engineer]
+
+    LEG --> LEGDIR[Legal Director]
+    LEG --> COUNSEL[Legal Counsel]
+    LEG --> PARAL[Paralegal]
+    LEG --> COMPLIANCE[Compliance Officer]
+    LEG --> RISK[Risk Manager]
+    LEG --> PRIVACY[Privacy Specialist]
+    LEG --> CONTRACTS[Contracts Manager]
+    LEG --> INTERNAL[Internal Controls]
+
+    PMO --> STRAT[Strategy Manager]
+    PMO --> PMOD[PMO Director]
+    PMO --> PMOAN[PMO Analyst]
+    PMO --> BEX[Business Excellence Manager]
+    PMO --> CI[Continuous Improvement Manager]
+    PMO --> OKR[Performance / OKR Manager]
+    PMO --> CORPDEV[Corporate Development]
+    PMO --> MNA[M&A Analyst]
+
+    RND --> RD[Research Scientist]
+    RND --> INNO[Innovation Manager]
+    RND --> PROTOTYPE[Prototype / Solutions Engineer]
+    RND --> DS2[Applied Researcher]
+
+    SEC --> CISO[CISO]
+    SEC --> SECENG[Security Engineer]
+    SEC --> SOC[SOC Analyst]
+    SEC --> GRC[Security GRC Specialist]
+    SEC --> INCIDENT[Incident Response]
+
+    ADMIN --> OFFICE[Office Manager]
+    ADMIN --> FAC[Facilities Manager]
+    ADMIN --> EXEC[Executive Assistant]
+    ADMIN --> RECEPTION[Reception / Front Desk]
+    ADMIN --> DOC[Document / Records Manager]
+
+    DESIGN --> UX[UX Designer]
+    DESIGN --> UI[UI Designer]
+    DESIGN --> UXR[UX Researcher]
+    DESIGN --> SERVICE[Service Designer]
+    DESIGN --> ART[Art Director]
+    DESIGN --> COPY[UX Writer / Copywriter]
+```
+
+## Role Pack Principle
+
+Each role becomes its own commercial product family.
+
+Examples:
+
+```text
+Accounting Specialist
+├── Invoice Analysis
+├── Expense Classification
+├── Reconciliation Assistance
+├── Month-End Checklist
+├── Variance Explanation
+├── Management Reporting
+└── Audit Preparation
+
+HR Manager
+├── Workforce Planning
+├── Turnover Diagnosis
+├── Hiring Plan
+├── Performance Review Analysis
+├── Employee Engagement Analysis
+├── Compensation Review
+├── Training Needs Analysis
+└── HR Management Reporting
+
+Sales Manager
+├── Sales Performance Diagnosis
+├── Pipeline Review
+├── Lost Deal Analysis
+├── Forecast Review
+├── Territory Analysis
+├── Rep Coaching
+└── Sales Management Reporting
+
+Backend Developer
+├── Root-Cause Debugging
+├── API Failure Diagnosis
+├── Log Analysis
+├── Code Review
+├── Refactoring Plan
+├── Architecture Review
+└── Incident Postmortem
+```
+
+## Taxonomy Rules
+
+1. A role may have many workflows.
+2. A workflow may be shared across roles only when the underlying task is genuinely common; the default is role-specific specialization.
+3. A Role Pack contains the highest-value recurring workflows for that role.
+4. A Department Pack may bundle adjacent roles but must preserve role-specific variants.
+5. An Executive Pack focuses on cross-functional decision workflows rather than operational micro-tasks.
+6. Industry overlays can specialize any role: e.g. Accountant → SaaS Accountant, Hospital Accountant, Manufacturing Accountant.
+7. Seniority overlays can specialize the same role: Specialist → Manager → Director → Executive.
+
+## Marketplace Facets
+
+Every workflow should support these dimensions:
+
+- Function / Department
+- Role
+- Seniority
+- Industry
+- Problem / Task
+- Desired Outcome
+- Workflow Type
+- AI Model Compatibility
+- Skill Level
+- Product Level
+
+## Future Expansion
+
+The taxonomy is intentionally extensible. Additional sectors such as healthcare, banking, insurance, education, government, hospitality, construction, real estate, logistics, manufacturing, and professional services should be represented primarily as **industry overlays** on the role taxonomy rather than duplicating the whole organizational chart.
