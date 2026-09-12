@@ -1,0 +1,16 @@
+erDiagram
+  DEPARTMENT ||--o{ ROLE : contains
+  ROLE ||--o{ ROLE_PACKAGE : owns
+  ROLE_PACKAGE ||--o{ PROMPT : contains
+  PROMPT ||--o{ PROMPT_VERSION : versions
+  PROMPT_VERSION ||--o{ QUALITY_RUN : evaluated_by
+  USER ||--o{ ORDER : places
+  ORDER ||--o{ ORDER_ITEM : contains
+  ORDER ||--o{ PAYMENT : has
+  USER ||--o{ ENTITLEMENT : receives
+  ROLE_PACKAGE ||--o{ ENTITLEMENT : unlocks
+  USER ||--o{ LIBRARY_ITEM : saves
+  PROMPT ||--o{ LIBRARY_ITEM : references
+  USER ||--o{ REVIEW : writes
+  PROMPT ||--o{ USAGE_EVENT : generates
+  ROLE_PACKAGE ||--o{ SEO_METADATA : has
